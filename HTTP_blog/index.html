@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>HTTP Versions</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+</head>
+<body>
+    <header>
+        <b> HTTP 1.1</b> vs <b>HTTP 2</b>
+    </header>
+    <div class="main_div">
+        <span class="topic">Let's understand on what is HTTP?</span>
+        <p class="content_text">Short for <b>Hypertext Transfer Protocol</b>, HTTP is a set of standards that allow
+            users of the World Wide Web to exchange information found on web pages.
+            When accessing any web page entering http:// in front of the address tells the browser to communicate over
+            HTTP.
+            <br /> It is an application layer protocol which runs on top of TCP/IP and it becomes the foundation of any
+            data exchange in the World Wide Web.
+        </p>
+        <span class="topic">HTTP Versions</span>
+        <p>HTTP has 4 stable versions – <b>HTTP/0.9, HTTP/1.0, HTTP/1.1 and HTTP/2</b>.<br/>
+            HTTP/3 was introduced in July, 2021 and already 2/3rd's of web browsers support it.
+            <img src="./version_reps.png" />
+        </p>
+        <span class="topic">Comparison on stable version HTTP/1.1 & HTTP/2</span>
+        <p><span>The key differences HTTP/2 has to HTTP/1.x are as follows:</span>
+        <ul>
+            <li> It is binary, instead of textual</li>
+            <li>It is fully multiplexed, instead of ordered and blocking</li>
+            <li>It can use one connection for parallelism</li>
+            <li> It uses header compression to reduce overhead</li>
+            <li> It allows Server Pushing to add responses proactively into the Browser cache.</li>
+        </ul>
+        </p>
+        <p>Let's discuss on each of these topics below,</p>
+        <span class="topic_sub"> Binary Protocol
+        </span>
+        <ul>
+            <li>HTTP1.x uses text-based commands to complete HTTP requests. If you were to view one of these requests
+                they would be perfectly readable (to a system admin at least).</li>
+            <li>HTTP2, on the other hand, uses binary commands (1s and 0s) to complete HTTP requests.
+                It needs to be converted back from binary to read the request.
+                This conversion to Binary takes place in the Binary Framing Layer,
+                so only binary commands are transmitted over the network.
+            </li>
+        </ul>
+        <span class="topic_sub"> Stream Prioritization
+        </span>
+        <p>
+            Prioritization refers to the order in which pieces of content are loaded.
+            It affects a webpage's load time. For example, certain resources, like large JavaScript files, may block the
+            rest of the page from loading if they have to load first.
+            More of the page can load at once if these render-blocking resources load last.
+        </p>
+        <ul>
+            <li>HTTP/2 offers a feature called weighted prioritization.
+                This allows developers to decide which page resources will load first, every time.</li>
+            <li> This was not possible With HTTP/1.1, this was easy, as head-of-line blocking made it simple to load
+                various assets in the correct order.</li>
+        </ul>
+
+        <span class="topic_sub"> Header compression
+        </span>
+        <ul>
+            <li>With HTTP/1.1 a new TCP connection has to be provided for every asset requested,
+                which if you have a page with over 100 requests can be time-consuming.</li>
+            <li> HTTP/2 uses a more advanced compression method called HPACK and sends all the headers in a single
+                connection utilizing
+                compression that eliminates redundant information in HTTP header packets.
+            </li>
+        </ul>
+        <span class="topic_sub"> Server Push
+        </span>
+        <ul>
+            <li>In HTTP/1.1 a server only serves content to a client device if the client asks for it. However, this
+                approach is not always practical for modern webpages,
+                which often involve several dozen separate resources that the client must request</li>
+            <li> HTTP/2 solves this problem by allowing a server to "push" content to a client before the client asks
+                for it.
+                The server also sends a message letting the client know what pushed content to expect
+            </li>
+        </ul>
+    </div>
+    <footer></footer>
+</body>
+
+</html>
